@@ -4,28 +4,15 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import { auth, db } from '../firebase';
 
 const PersonalChatScreen = ({ route }) => {
-	const userInfo = route.params.userInfo;
+	const selectedUserInfo = route.params.userInfo;
 
 	const [messages, setMessages] = useState([]);
 
 	useEffect(() => {
-		// db.collection(`chat-${auth?.currentUser?.email}-${userInfo.email}`)
-		// 	.orderBy('createdAt', 'desc')
-		// 	.onSnapshot(snap =>
-		// 		setMessages(
-		// 			snap.docs.map(doc => ({
-		// 				_id: doc.data()._id,
-		// 				createdAt: doc.data().createdAt.toDate(),
-		// 				text: doc.data().text,
-		// 				user: doc.data().user
-		// 			}))
-		// 		)
-		// 	);
-
 		const docId =
-			userInfo._id > auth?.currentUser?.uid
-				? auth?.currentUser?.uid + '-' + userInfo._id
-				: userInfo._id + '-' + auth?.currentUser?.uid;
+			selectedUserInfo._id > auth?.currentUser?.uid
+				? auth?.currentUser?.uid + '-' + selectedUserInfo._id
+				: selectedUserInfo._id + '-' + auth?.currentUser?.uid;
 
 		db.collection(`personalchat`)
 			.doc(docId)
@@ -50,15 +37,15 @@ const PersonalChatScreen = ({ route }) => {
 		const { _id, createdAt, text, user } = messages[0];
 
 		const docId =
-			userInfo._id > auth?.currentUser?.uid
-				? auth?.currentUser?.uid + '-' + userInfo._id
-				: userInfo._id + '-' + auth?.currentUser?.uid;
+			selectedUserInfo._id > auth?.currentUser?.uid
+				? auth?.currentUser?.uid + '-' + selectedUserInfo._id
+				: selectedUserInfo._id + '-' + auth?.currentUser?.uid;
 
 		db.collection(`personalchat`).doc(docId).collection('messages').add({
 			_id,
 			createdAt,
 			text,
-			sentTo: userInfo,
+			sentTo: selectedUserInfo,
 			user
 		});
 	}, []);
