@@ -48,6 +48,9 @@ const PersonalChatScreen = ({ route }) => {
 			sentTo: selectedUserInfo,
 			user
 		});
+		// db.collection(`personalchat`).doc(docId).set({
+		// 	chatRoomId: docId
+		// });
 	}, []);
 
 	return (
@@ -56,7 +59,7 @@ const PersonalChatScreen = ({ route }) => {
 			onSend={messages => onSend(messages)}
 			showAvatarForEveryMessage={true}
 			user={{
-				_id: auth?.currentUser?.email,
+				_id: auth?.currentUser?.uid,
 				name: auth?.currentUser?.displayName,
 				avatar: auth?.currentUser?.photoURL
 			}}

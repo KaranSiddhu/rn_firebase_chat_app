@@ -4,8 +4,8 @@ import { Button, Input } from 'react-native-elements';
 import { auth } from '../firebase';
 
 const LogInScreens = ({ navigation }) => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('@gmail.com');
+	const [password, setPassword] = useState('123456');
 
 	useEffect(() => {
 		auth.onAuthStateChanged(user => {
@@ -25,7 +25,7 @@ const LogInScreens = ({ navigation }) => {
 			.signInWithEmailAndPassword(email, password)
 			.then(userCredential => {
 				// Signed in
-				navigation.replace('HomeScreen');
+				navigation.replace('WSHomePage');
 
 				// ...
 			})

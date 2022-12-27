@@ -26,7 +26,7 @@ const RegisterScreen = ({ navigation }) => {
 					'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='
 			});
 
-			navigation.replace('HomeScreen');
+			navigation.replace('WSHomePage');
 		} catch (error) {
 			var errorCode = error.code;
 			var errorMessage = error.message;
@@ -34,39 +34,6 @@ const RegisterScreen = ({ navigation }) => {
 			Alert.alert(errorMessage);
 		}
 
-		// auth
-		// 	.createUserWithEmailAndPassword(email, password)
-		// 	.then(userCredential => {
-		// 		// Signed in
-		// 		var user = userCredential.user;
-		// 		user
-		// 			.updateProfile({
-		// 				displayName: name,
-		// 				photoURL:
-		// 					'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='
-		// 			})
-		// 			.then((user) => {
-		// 				// Update successful
-		// 				console.log('Update successful - ', user);
-		// 			})
-		// 			.catch(error => {
-		// 				// An error occurred
-		// 				console.log(' update err - ', error);
-		// 			});
-
-		// 		db.collection('users').doc(user.uid).set({
-		// 			email: user.email,
-		//             _id: user.uid,
-		// 		});
-		// 		navigation.replace('HomeScreen');
-		// 	})
-		// 	.catch(error => {
-		// 		var errorCode = error.code;
-		// 		var errorMessage = error.message;
-		// 		// ..
-		// 		console.log('err -', errorCode, ' - ', errorMessage);
-		// 		Alert.alert(errorMessage);
-		// 	});
 	};
 
 	return (
